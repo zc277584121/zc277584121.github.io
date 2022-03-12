@@ -1,3 +1,9 @@
+---
+layout: post
+title:  "Welcome to Jekyll!"
+---
+
+
 ## 1.Prepare the dataset
 
 The **[Caltech-UCSD Birds-200-2011 (CUB-200-2011)](http://www.vision.caltech.edu/visipedia/CUB-200-2011.html)** dataset is the most widely-used dataset for fine-grained visual categorization task.
