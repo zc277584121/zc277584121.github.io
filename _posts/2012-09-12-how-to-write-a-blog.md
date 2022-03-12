@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "Train CUB-200-2011 dataset using towhee"
 ---
-
+A full-process towhee training example.
 
 ## 1.Prepare the dataset
 
