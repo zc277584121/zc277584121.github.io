@@ -1,7 +1,15 @@
 ## Welcome to GitHub Pages
 
 Yyyyyou can use the [editor on GitHub](https://github.com/zc277584121/zc277584121.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
-
+```html
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
+```
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
 ### Markdown
