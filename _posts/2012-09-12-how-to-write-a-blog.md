@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Train CUB-200-2011 dataset using towhee"
+categories: towhee
 ---
 A full-process towhee training example.
 
