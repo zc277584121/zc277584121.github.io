@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Building Code Retrieval for Claude Code from Scratch"
-categories: AICoding
+categories: AI-Coding
 ---
 
 The story begins with a bug hunt...
