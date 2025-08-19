@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Building Code Retrieval for Claude Code from Scratch"
-categories: code claude
+categories: AI Coding
 ---
 
 # Building Code Retrieval for Claude Code from Scratch
