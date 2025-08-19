@@ -4,12 +4,10 @@ title: "Building Code Retrieval for Claude Code from Scratch"
 categories: AICoding
 ---
 
-# Building Code Retrieval for Claude Code from Scratch
-
 The story begins with a bug hunt...
 
 When I opened Claude Code and asked it to help me locate a bug, what happened? It repeatedly used grep + read file tools, guessing possible keywords and constantly searching through massive amounts of files. After a minute, it still hadn't found anything.
-![](../images/build_cc/miss_the_bug.png)
+![](https://zc277584121.github.io/images/build_cc/miss_the_bug.png)
 
 Then, through hints and guidance from me, after going back and forth for 5 minutes, it finally located the problem file. But I discovered that among all the files it read, only 10 lines of code were actually related to this issue - 99% of the code was irrelevant. Throughout this repetitive dialogue and reading of massive amounts of unrelated code, not only were tokens wasted, but precious time was also squandered.
 
@@ -30,13 +28,13 @@ After some reflection and research, I identified the following key pain points f
   Traditional grep can only match literal meanings and cannot understand semantic relationships and contextual meanings of code. It's like finding a needle in a haystack, relying purely on luck.
 
 Others have raised similar issues with Claude Code, such as [issue1](https://github.com/anthropics/claude-code/issues/1315) and [issue2](https://github.com/anthropics/claude-code/issues/4556). You can see that even Claude Code, as powerful as it is, cannot escape these pain points and problems.
-![](../images/build_cc/claude-code-issue.png)
+![](https://zc277584121.github.io/images/build_cc/claude-code-issue.png)
 
 ## How Does Cursor Handle This?
 
 To address these pain points, Cursor's founders actually revealed their solution early on in a [forum post](https://forum.cursor.com/t/codebase-indexing/36) - "Codebase Indexing".
 
-![](../images/build_cc/cursor-reply.png)
+![](https://zc277584121.github.io/images/build_cc/cursor-reply.png)
 
 The approach is straightforward: split the codebase into small chunks, send them to the server, and use embedding models to embed the code. This is the standard code RAG solution.
 
@@ -87,7 +85,7 @@ Following decoupling and layered design principles, I structured the architectur
 
 This design allows core modules to be reused by upper-layer modules, providing flexibility for both horizontal and vertical scaling in the future.
 
-![](../images/build_cc/Architecture.png)
+![](https://zc277584121.github.io/images/build_cc/Architecture.png)
 
 ### Core Modules
 
@@ -125,7 +123,7 @@ The advantages of AST splitting are obvious:
 - **Syntactic Completeness**: Each chunk is a complete syntactic unit, avoiding awkward situations where functions are split in half
 - **Logical Coherence**: Related code logic remains in the same chunk, allowing AI search to find more accurate context
 - **Multi-language Support**: Uses different tree-sitter parsers for different programming languages, accurately identifying and splitting JavaScript function declarations, Python class definitions, Java methods, Go function definitions, etc.
-![](../images/build_cc/ast-example.png)
+![](https://zc277584121.github.io/images/build_cc/ast-example.png)
 
 ### 2. LangChain Text Splitting (Fallback Strategy) 🛡️
 For languages that AST cannot handle or parsing failures, I use LangChain's RecursiveCharacterTextSplitter as a backup solution.
@@ -154,7 +152,7 @@ Merkle Tree is like a layered "fingerprint" system:
 - Folders have fingerprints based on their content files
 - Finally converging into a unique root node fingerprint for the entire codebase
 
-![](../images/build_cc/merkle-tree.jpeg)
+![](https://zc277584121.github.io/images/build_cc/merkle-tree.jpeg)
 
 As long as file content changes, its upper-layer hash fingerprints will change layer by layer up to the root node.
 
@@ -203,13 +201,13 @@ Let me approach this by working backward from actual usage scenarios.
 
 Some large codebases take a long time to index. It isn't the best user experience to block on this slow step.
 
-![](../images/build_cc/sync.png)
+![](https://zc277584121.github.io/images/build_cc/sync.png)
 
 So we need asynchronous background processing. But MCP doesn't natively support background operations - how do we solve this?
 
 The solution: implement a background process within the MCP server to handle indexing, allowing the server to immediately return a "indexing started" message while users continue with other tasks.
 
-![](../images/build_cc/async.png)
+![](https://zc277584121.github.io/images/build_cc/async.png)
 
 Much better!
 
@@ -275,7 +273,7 @@ claude mcp add claude-context -e OPENAI_API_KEY=your-openai-api-key -e MILVUS_TO
 
 Let's see it in action! I asked it to help me find that bug from earlier. First, I indexed the current codebase, then asked it to locate this bug based on a specific description.
 
-![](../images/build_cc/cc-showcase.gif)
+![](https://zc277584121.github.io/images/build_cc/cc-showcase.gif)
 
 The results were impressive! Using claude-context MCP tool calls, it successfully identified the exact file and line number of the bug and provided detailed explanations.
 
@@ -289,7 +287,7 @@ With claude-context MCP integrated, Claude Code can leverage it across numerous 
 
 ## Open Source Community Feedback
 
-![](../images/build_cc/git-stars.png)
+![](https://zc277584121.github.io/images/build_cc/git-stars.png)
 
 https://github.com/zilliztech/claude-context
 
@@ -301,7 +299,7 @@ This translates to 40% savings in both time and cost.
 
 Conversely, with equivalent limited token budgets, claude-context MCP delivers superior retrieval performance.
 
-![](../images/build_cc/cc-vs-baseline.png)
+![](https://zc277584121.github.io/images/build_cc/cc-vs-baseline.png)
 
 Additional testing details will be published in the GitHub repository as they become available.
 
