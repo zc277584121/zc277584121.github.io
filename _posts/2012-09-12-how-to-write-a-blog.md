@@ -6,7 +6,7 @@ categories: towhee
 
 ## 1.Prepare the dataset
 
-The **[Caltech-UCSD Birds-200-2011 (CUB-200-2011)](http://www.vision.caltech.edu/visipedia/CUB-200-2011.html)** dataset is the most widely-used dataset for fine-grained visual categorization task.
+The **[Caltech-UCSD Birds-200-2011(CUB-200-2011)](http://www.vision.caltech.edu/visipedia/CUB-200-2011.html)** dataset is the most widely-used dataset for fine-grained visual categorization task.
 * Number of categories: 200
 * Number of images: 11,788
 * Annotations per image: 15 Part Locations, 312 Binary Attributes, 1 Bounding Box
@@ -23,7 +23,7 @@ When you downloaded it, you can see this structure.
     ├── CUB_200_2011.tgz
     └── segmentations.tgz
 ```
-Just extract `CUB_200_2011.tgz` and rename folder `images` to `images_orig`.
+Just extract `CUB_200_2011.tgz`, and rename folder `images` to `images_orig`.
 
     cd data
     tar zxvf CUB_200_2011.tgz
