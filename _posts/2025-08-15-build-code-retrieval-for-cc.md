@@ -7,7 +7,8 @@ categories: AI-Coding
 The story begins with a bug hunt...
 
 When I opened Claude Code and asked it to help me locate a bug, what happened? It repeatedly used grep + read file tools, guessing possible keywords and constantly searching through massive amounts of files. After a minute, it still hadn't found anything.
-![](https://zc277584121.github.io/images/build_cc/miss_the_bug.png)
+
+![miss the bug](https://zc277584121.github.io/images/build_cc/miss_the_bug.png)
 
 Then, through hints and guidance from me, after going back and forth for 5 minutes, it finally located the problem file. But I discovered that among all the files it read, only 10 lines of code were actually related to this issue - 99% of the code was irrelevant. Throughout this repetitive dialogue and reading of massive amounts of unrelated code, not only were tokens wasted, but precious time was also squandered.
 
