@@ -10,7 +10,7 @@ Let me start with a familiar scenario.
 
 When you search for "raincoat" on an e-commerce platform, the word "raincoat" in the returned product titles will be highlighted to indicate the matched query term.
 
-[Taobao search highlight example](https://zc277584121.github.io/images/highlight-preview/e-commerce-search.png)
+![E-commerce search highlight example](https://zc277584121.github.io/images/highlight-preview/e-commerce-search.png)
 
 This is traditional search highlighting.
 
@@ -70,7 +70,7 @@ Semantic Highlight is designed to solve this problem.
 
 It no longer mechanically matches keywords but **understands semantics**. When a user asks "How is iPhone performance?", even if the text doesn't contain the word "performance," as long as it semantically answers the question (like mentioning chips, benchmarks, or smoothness), it will be highlighted.
 
-[Traditional Highlight vs Semantic Highlight](https://zc277584121.github.io/images/highlight-preview/traditional_vs_semantic_highlight.png)
+![Traditional Highlight vs Semantic Highlight](https://zc277584121.github.io/images/highlight-preview/traditional_vs_semantic_highlight.png)
 
 In the AI era, this need is relatively easy to implement, but cost and efficiency must be considered.
 
@@ -88,7 +88,7 @@ The answer is yes, but each has its own problems.
 
 OpenSearch released a model specifically for semantic highlighting this year: `opensearch-semantic-highlighter-v1`.
 
-[OpenSearch Semantic Highlighter](https://zc277584121.github.io/images/highlight-preview/opensearch_page.png)
+![OpenSearch Semantic Highlighter](https://zc277584121.github.io/images/highlight-preview/opensearch_page.png)
 
 But it has two fatal issues.
 
@@ -116,7 +116,7 @@ More critically, **it doesn't support Chinese**.
 
 Naver's Provence series is another option. It's a model specifically trained for Context Pruning, whose principles I discussed in my previous article.
 
-[Provence](https://zc277584121.github.io/images/highlight-preview/provence_page.png)
+![Provence](https://zc277584121.github.io/images/highlight-preview/provence_page.png)
 
 Although it handles Context Pruning tasks, Context Pruning and Semantic Highlight follow identical technical approaches—both are based on semantic matching to find the most relevant parts and exclude irrelevant ones. Therefore, the Provence series can also be used for Semantic Highlight tasks.
 
@@ -148,7 +148,7 @@ But Semantic Highlight emphasizes precision. I want to highlight the core senten
 
 I discovered a treasure project: **Open Provence**
 
-[Open Provence](https://zc277584121.github.io/images/highlight-preview/openprovence_page.png)
+![Open Provence](https://zc277584121.github.io/images/highlight-preview/openprovence_page.png)
 
 This project fully reproduces Provence's training code. It includes not only training scripts but also data processing and evaluation tools, and even provides pre-trained models of different scales.
 
@@ -175,7 +175,7 @@ My core approach: **Use LLM to annotate high-quality datasets, train rapidly bas
 
 The key is data construction. I have the LLM (Qwen3 8B) output its complete reasoning process during annotation. The annotation workflow roughly follows:
 
-[LLM Annotation Flow](https://zc277584121.github.io/images/highlight-preview/llm_annotation_flow.png)
+![LLM Annotation Flow](https://zc277584121.github.io/images/highlight-preview/llm_annotation_flow.png)
 
 This approach has three benefits:
 1. **Higher annotation quality**: The model thinks before answering, essentially self-checking
@@ -200,11 +200,11 @@ Evaluated models include the Open Provence series, Naver's Provence/XProvence se
 
 **English Datasets**
 
-[Average F1 on English datasets](https://zc277584121.github.io/images/highlight-preview/avg_f1_english.png)
+![Average F1 on English datasets](https://zc277584121.github.io/images/highlight-preview/avg_f1_english.png)
 
 **Chinese Datasets**
 
-[Average F1 on Chinese datasets](https://zc277584121.github.io/images/highlight-preview/avg_f1_chinese.png)
+![Average F1 on Chinese datasets](https://zc277584121.github.io/images/highlight-preview/avg_f1_chinese.png)
 
 As you can see, in bilingual evaluation, my model's average F1 achieved SOTA performance, surpassing all previous models and solutions, and significantly outperforming the XProvence series models on Chinese test evaluations.
 
@@ -289,8 +289,6 @@ You ask a technical question in a RAG system, and Milvus retrieves 5 documents, 
 This not only improves user experience but also makes it easier for developers to debug and optimize, directly seeing retrieval quality and which sentences are truly useful.
 
 I believe Semantic Highlight will become a standard feature in next-generation search and RAG systems.
-
-Do you have any thoughts or suggestions about the bilingual Semantic Highlight model? Feel free to discuss in the comments!
 
 ---
 
