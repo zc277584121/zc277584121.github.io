@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Bilingual Semantic Highlight & Context Pruning Model Release"
-categories: [RAG, LLM, Model Release]
+categories: [RAG]
 ---
 
 # Bilingual Semantic Highlight & Context Pruning Model Release
