@@ -14,7 +14,7 @@ Here's an example of why this matters.
 
 On February 26, NVIDIA reported Q4 earnings — revenue up 65% year-over-year, beating expectations. The stock dropped 5.5% anyway.
 
-![NVIDIA 6-month stock chart showing the post-earnings dip on Feb 26](./images/investment-agent/nvidia-stock-6m-chart-cropped.png)
+![NVIDIA 6-month stock chart showing the post-earnings dip on Feb 26](https://zc277584121.github.io/images/investment-agent/nvidia-stock-6m-chart-cropped.png)
 
 I didn't find out until the next morning. But when I checked my phone, the agent had already sent me this the night before:
 
@@ -380,7 +380,9 @@ OpenClaw has a Heartbeat mechanism for this. The Gateway process sends a pulse t
 - Note any new patterns worth remembering
 ```
 
-No Python scripts, no cron jobs, no server deployment. The Gateway process runs in the background, reads this file, and executes based on time and conditions.
+No Python scripts, no cron jobs, no server deployment. The Gateway process runs in the background, reads this file, and executes based on time and conditions. Here's the flow:
+
+![Heartbeat sequence: Gateway sends pulses to the Agent, which queries Exa and Milvus at scheduled times and pushes results to the phone](https://zc277584121.github.io/images/investment-agent/heartbeat-sequence.png)
 
 My daily routine now looks like this: wake up around 7:50 AM, check my phone — the morning brief is already there. A 5-minute scan tells me what happened overnight and whether it affects my positions. During work hours, I only get notified if something moves more than 3%. On weekends, I spend 30 minutes reviewing the weekly summary.
 
@@ -388,31 +390,7 @@ My daily routine now looks like this: wake up around 7:50 AM, check my phone —
 
 ## How It All Fits Together
 
-```mermaid
-graph TD
-    subgraph OpenClaw
-        GW[Gateway<br/>Phone notifications]
-        HB[Heartbeat<br/>Auto-trigger every 30 min]
-        SK[Skills<br/>My analysis framework]
-        BR[Brain<br/>Claude / GPT / local model]
-    end
-
-    subgraph External Tools
-        E[Exa semantic search<br/>Earnings, news, research]
-        MV[Milvus memory retrieval<br/>Past decisions + preferences + patterns]
-    end
-
-    HB --> BR
-    GW --> BR
-    BR --> SK
-    BR --> E
-    BR --> MV
-    SK --> BR
-    BR --> GW
-
-    Chat[Phone conversations] -.->|Auto-extract memories| MV
-    Review[Post-trade reviews] -.->|Manual storage| MV
-```
+![Architecture overview: OpenClaw orchestrates the Brain, Skills, Heartbeat, and Gateway components, connecting to Exa for search and Milvus for memory](https://zc277584121.github.io/images/investment-agent/architecture-overview.png)
 
 The total cost: Exa API roughly $10/month, LLM API calls roughly $10/month, OpenClaw and Milvus both run locally for free. About $20/month total.
 
