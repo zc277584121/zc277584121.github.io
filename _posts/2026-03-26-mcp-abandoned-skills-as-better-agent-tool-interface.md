@@ -74,11 +74,7 @@ MCP can't do any of this. There's a process boundary between server and agent â€
 
 ## But Does MCP Deserve to Die?
 
-A Hacker News thread titled "When does MCP make sense vs CLI?" saw top comments overwhelmingly favoring CLI: "CLI tools are like precision instruments," "CLIs also feel snappier than MCPs."
-
-![Hacker News discussion on MCP vs CLI](https://zc277584121.github.io/images/mcp-vs-skills/hn-mcp-vs-cli-discussion.png)
-
-But it's not that simple.
+A Hacker News thread titled "When does MCP make sense vs CLI?" saw top comments overwhelmingly favoring CLI: "CLI tools are like precision instruments," "CLIs also feel snappier than MCPs." But it's not that simple.
 
 MCP has been donated to the Linux Foundation, has over 10,000 active servers, and SDK downloads hit 97 million per month. An ecosystem that large doesn't just die overnight.
 
