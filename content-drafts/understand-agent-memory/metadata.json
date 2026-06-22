@@ -1,0 +1,27 @@
+{
+  "topic": "understand-agent-memory",
+  "blog_url": "https://zc277584121.github.io/ai-agent/2026/06/22/understand-agent-memory.html",
+  "blog_repo_images": "https://zc277584121.github.io/images/understand-agent-memory/",
+  "platforms": {
+    "blog": {
+      "status": "published",
+      "url": "https://zc277584121.github.io/ai-agent/2026/06/22/understand-agent-memory.html"
+    },
+    "devto": {
+      "status": "draft",
+      "canonical_url": "https://zc277584121.github.io/ai-agent/2026/06/22/understand-agent-memory.html"
+    },
+    "linkedin": {
+      "status": "draft",
+      "image": "content-drafts/understand-agent-memory/images/agent-memory-types.png"
+    },
+    "x": {
+      "status": "draft",
+      "image": "content-drafts/understand-agent-memory/images/agent-memory-types.png"
+    },
+    "reddit": {
+      "status": "draft",
+      "subreddit": "r/OpenClaw"
+    }
+  }
+}
